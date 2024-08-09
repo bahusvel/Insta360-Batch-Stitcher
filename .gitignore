@@ -1,0 +1,9 @@
+test/
+model/
+lib/
+include/
+sdk/
+example/
+bin/
+src/stitcher
+*.code-workspace

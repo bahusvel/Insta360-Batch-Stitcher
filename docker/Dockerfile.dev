@@ -1,0 +1,11 @@
+FROM ubuntu:18.04
+
+COPY sdk/libMediaSDK-dev_2.0-4.tar.xz /
+RUN echo 'deb http://security.ubuntu.com/ubuntu xenial-security main' > /etc/apt/sources.list.d/xenial-security.list
+RUN apt-get update && apt-get install -y build-essential xz-utils libjpeg-dev libtiff-dev libgomp1 libjasper1 libjasper-dev libimage-exiftool-perl wget
+RUN wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz && tar xvf ffmpeg-release-amd64-static.tar.xz && cp ffmpeg*/ffmpeg /usr/bin/
+
+RUN tar -xvf libMediaSDK-dev_2.0-4.tar.xz
+RUN dpkg -i /libMediaSDK-dev_2.0-4/libMediaSDK-dev_2.0-4_amd64_ubuntu18.04.deb
+
+# ENTRYPOINT ["/usr/bin/MediaSDKTest"]

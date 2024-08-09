@@ -1,0 +1,5 @@
+FROM insta360-dev
+
+RUN mkdir /model
+COPY model/df86980d.ins /model/df86980d.ins
+RUN --mount=type=bind,source=./src,target=/src g++ src/main.cc -std=c++11 -lMediaSDK -o /usr/bin/stitcher
